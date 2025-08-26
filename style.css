@@ -1,0 +1,133 @@
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7f9;
+  color: #333;
+}
+
+/* --- CSS Grid Layout for Main Structure --- */
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "footer";
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Header Styles */
+.header {
+  grid-area: header;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Flexbox for Navigation --- */
+.navbar {
+  grid-area: nav;
+  background-color: #375a7f;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex; /* Using Flexbox for alignment */
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap; /* Allows links to wrap on smaller screens */
+}
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.navbar a:hover {
+  background-color: #4a74a1;
+  border-radius: 4px;
+}
+
+/* Main Content & Sidebar Section */
+.main-content-area {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr; /* Default single column for mobile */
+  gap: 20px;
+}
+
+.content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Flexbox for Content Cards --- */
+.card-container {
+  display: flex; /* Using Flexbox for card layout */
+  flex-wrap: wrap; /* Cards will wrap to the next line if needed */
+  justify-content: space-between; /* Spacing between cards */
+  gap: 15px;
+  margin-top: 20px;
+}
+.card {
+  background-color: #e9ecef;
+  padding: 15px;
+  border-radius: 8px;
+  flex: 1 1 200px; /* Flex-grow, flex-shrink, flex-basis */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Styles */
+.footer {
+  grid-area: footer;
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* --- Responsive Design with Media Queries --- */
+
+/* Tablet View (e.g., 768px and up) */
+@media (min-width: 768px) {
+  .container {
+    /* Adjusting the main grid for a two-column layout */
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "main sidebar"
+      "footer footer";
+  }
+
+  .card-container {
+    justify-content: flex-start; /* Adjusts alignment for more space */
+  }
+}
+
+/* Desktop View (e.g., 1024px and up) */
+@media (min-width: 1024px) {
+  .container {
+    /* Adjusting the main grid for larger screens */
+    grid-template-columns: 4fr 1fr;
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "main sidebar"
+      "footer footer";
+  }
+}
